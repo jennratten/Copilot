@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Cowork Access Review Toolkit - Documentation</title>
+<style>:root {
+    --bg: #f5f7fa;
+    --surface: #ffffff;
+    --surface-alt: #eef2f7;
+    --text: #1c2530;
+    --text-soft: #515c6b;
+    --border: #d8e0ea;
+    --accent: #2b5797;
+    --accent-soft: #e6eefb;
+    --code-bg: #f0f3f8;
+    --code-text: #1f3b66;
+    --verified-bg: #e3f5ea;
+    --verified-text: #1e6b3d;
+    --confirm-bg: #fff4e0;
+    --confirm-text: #8a5a00;
+    --placeholder-bg: #fde8ec;
+    --placeholder-text: #9c2742;
+    --shadow: 0 1px 3px rgba(20,40,70,0.08), 0 6px 24px rgba(20,40,70,0.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f141b;
+      --surface: #161d27;
+      --surface-alt: #1d2630;
+      --text: #e7edf4;
+      --text-soft: #a4b1c2;
+      --border: #2a3644;
+      --accent: #6ea0e8;
+      --accent-soft: #1b2a40;
+      --code-bg: #11202e;
+      --code-text: #9ec5f0;
+      --verified-bg: #133225;
+      --verified-text: #7fd6a3;
+      --confirm-bg: #352a12;
+      --confirm-text: #e6bf76;
+      --placeholder-bg: #381a22;
+      --placeholder-text: #f0a3b6;
+      --shadow: 0 1px 3px rgba(0,0,0,0.4), 0 6px 24px rgba(0,0,0,0.35);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  header.masthead {
+    background: linear-gradient(135deg, #1f3c6e 0%, #2b5797 60%, #3a6fb5 100%);
+    color: #ffffff;
+    padding: 2.4rem clamp(1rem, 4vw, 3rem);
+  }
+
+  
+.masthead-inner {
+    max-width: 1180px;
+    margin-inline: auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+}
+
+.shield {
+    margin-top: 0.4rem;
+}
+
+.masthead-inner > div:first-of-type {
+    flex: 1;
+    min-width: 0;
+}
+
+  
+  .masthead h1 { margin: 0; font-size: clamp(1.5rem, 3.5vw, 2.2rem); font-weight: 700; letter-spacing: -0.01em; }
+  .masthead p.sub { margin: 0.35rem 0 0; font-size: 1.02rem; color: rgba(255,255,255,0.9); max-width: 300ch; }
+
+
+
+  .badge {
+    background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(255,255,255,0.28);
+    color: #fff;
+    padding: 0.28rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .layout { max-width: 1180px; margin-inline: auto; display: flex; gap: 2rem; padding: 2rem clamp(1rem, 4vw, 3rem); align-items: flex-start; }
+
+  nav.toc {
+    flex: 0 0 240px;
+    position: sticky;
+    top: 1.2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.1rem 1.2rem;
+    box-shadow: var(--shadow);
+    font-size: 0.9rem;
+  }
+  nav.toc h2 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-soft); margin: 0 0 0.7rem; }
+  nav.toc ol { list-style: none; margin: 0; padding: 0; counter-reset: toc; }
+  nav.toc li { margin: 0.12rem 0; }
+  nav.toc a {
+    display: block;
+    color: var(--text-soft);
+    text-decoration: none;
+    padding: 0.3rem 0.5rem;
+    border-radius: 7px;
+    border-inline-start: 2px solid transparent;
+  }
+  nav.toc a:hover { background: var(--accent-soft); color: var(--accent); border-inline-start-color: var(--accent); }
+
+  main { flex: 1 1 auto; min-width: 0; }
+
+  section.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.6rem clamp(1.1rem, 3vw, 2rem);
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow);
+    scroll-margin-top: 1.2rem;
+  }
+  section.card > h2 {
+    margin-top: 0;
+    font-size: 1.3rem;
+    color: var(--accent);
+    display: flex;
+    align-items: baseline;
+    gap: 0.55rem;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0.55rem;
+  }
+  section.card > h2 .num {
+    font-size: 0.85rem;
+    color: var(--text-soft);
+    font-weight: 600;
+    background: var(--surface-alt);
+    border-radius: 6px;
+    padding: 0.1rem 0.5rem;
+  }
+  h3 { font-size: 1.04rem; margin: 1.4rem 0 0.5rem; color: var(--text); }
+  p { margin: 0.6rem 0; }
+  ul, ol { margin: 0.5rem 0; padding-inline-start: 1.3rem; }
+  li { margin: 0.3rem 0; }
+  a { color: var(--accent); }
+
+  .lead { font-size: 1.05rem; color: var(--text-soft); }
+
+  code, .mono {
+    font-family: "SF Mono", ui-monospace, "Cascadia Code", Consolas, "Liberation Mono", monospace;
+    background: var(--code-bg);
+    color: var(--code-text);
+    padding: 0.12rem 0.4rem;
+    border-radius: 5px;
+    font-size: 0.86em;
+    word-break: break-all;
+  }
+
+  table { width: 100%; border-collapse: collapse; margin: 0.9rem 0; font-size: 0.92rem; }
+  caption { text-align: start; color: var(--text-soft); font-size: 0.85rem; margin-bottom: 0.4rem; }
+  th, td { text-align: start; padding: 0.6rem 0.7rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  thead th { background: var(--surface-alt); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-soft); }
+  tbody tr:hover { background: var(--surface-alt); }
+
+  .tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 0.12rem 0.5rem;
+    border-radius: 999px;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+  .tag.verified { background: var(--verified-bg); color: var(--verified-text); }
+  .tag.confirm { background: var(--confirm-bg); color: var(--confirm-text); }
+  .tag.placeholder { background: var(--placeholder-bg); color: var(--placeholder-text); }
+
+  .callout {
+    border-inline-start: 4px solid var(--accent);
+    background: var(--accent-soft);
+    border-radius: 8px;
+    padding: 0.9rem 1.1rem;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+  }
+  .callout.warn { border-inline-start-color: #c98a16; background: var(--confirm-bg); color: var(--confirm-text); }
+  .callout strong { color: inherit; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.8rem; }
+  .legend div { display: flex; align-items: center; gap: 0.45rem; font-size: 0.88rem; color: var(--text-soft); }
+
+  .kv { display: grid; grid-template-columns: max-content 1fr; gap: 0.4rem 1.2rem; margin: 0.8rem 0; font-size: 0.92rem; }
+  .kv dt { color: var(--text-soft); font-weight: 600; }
+  .kv dd { margin: 0; }
+
+  footer.docfoot {
+    max-width: 1180px;
+    margin-inline: auto;
+    padding: 1.5rem clamp(1rem, 4vw, 3rem) 3rem;
+    color: var(--text-soft);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 820px) {
+    .layout { flex-direction: column; }
+    nav.toc { position: static; width: 100%; flex-basis: auto; }
+  }
+
+  @media print {
+    body { background: #fff; color: #000; font-size: 11.5pt; }
+    nav.toc, .masthead .badge-row { display: none; }
+    header.masthead { background: #1f3c6e !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    section.card { box-shadow: none; border: 1px solid #bbb; break-inside: avoid; page-break-inside: avoid; }
+    .layout { display: block; padding: 0.5rem 0; }
+    a { color: #000; text-decoration: underline; }
+  }
+
+.feature-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin-top:.7rem}.mini-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem;box-shadow:var(--shadow)}.mini-card h3{margin-top:0;color:var(--accent)}.chip-row{display:flex;flex-wrap:wrap;gap:.55rem;margin:.75rem 0}.chip{background:var(--surface-alt);color:var(--accent);border:1px solid var(--border);border-radius:999px;padding:.35rem .75rem;font-weight:600;font-size:.85rem}.step-grid{display:grid;gap:.7rem;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));margin:.8rem 0}.step-btn{cursor:pointer;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.75rem .6rem;color:var(--accent);font-weight:700;font-family:inherit}.step-btn.active,.step-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}.step-num{display:inline-flex;align-items:center;justify-content:center;width:1.5rem;height:1.5rem;border-radius:999px;background:var(--accent-soft);color:var(--accent);margin-right:.35rem}.step-btn.active .step-num{background:#fff;color:var(--accent)}#stepDetail{border-inline-start:4px solid var(--accent);background:var(--accent-soft);border-radius:8px;padding:1rem 1.1rem;margin:1rem 0}#stepDetail h3{margin-top:0}.promptwrap{position:relative;margin-top:.8rem}.copybtn{position:absolute;top:12px;right:12px;background:var(--accent);color:#fff;border:0;border-radius:8px;padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}.copybtn:hover{filter:brightness(.92)}pre.prompt{background:#14233f;color:#e8eefb;border-radius:12px;padding:46px 18px 18px;margin:0;overflow:auto;font-family:"Cascadia Code",Consolas,"Courier New",monospace;font-size:13px;line-height:1.55;white-space:pre-wrap}.live{position:absolute;left:-9999px}details.q{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:.6rem 0}details.q summary{list-style:none;cursor:pointer;padding:14px 18px;font-weight:600;color:var(--accent);display:flex;justify-content:space-between;align-items:center;gap:12px}details.q summary::-webkit-details-marker{display:none}details.q .a{padding:0 18px 16px;color:var(--text-soft);font-size:14.5px}
+</style>
+</head>
+<body>
+<header class="masthead"><div class="masthead-inner"><svg class="shield" width="56" height="56" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2.5" fill="rgba(255,255,255,0.18)" stroke="#ffffff" stroke-width="1.3"/><path d="M8 8h8M8 12h8M8 16h5" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round"/></svg><div><h1>Cowork Access Review Toolkit</h1><p class="sub">All inclusive toolkit for turning real Copilot Cowork activity into a governance-ready access review request containing evidence-based business use cases. Includes an overview, user guide, documentation and resources.</p></div><div class="badge-row"><span class="badge">Platform: Copilot Cowork</span><span class="badge">Solution: Access Review Toolkit</span></div></div></header>
+<div class="layout"><nav class="toc" aria-label="Table of contents"><h2>On this page</h2><ol><li><a href="#about">How to read this</a></li><li><a href="#overview">1. Overview</a></li><li><a href="#purpose">2. Business purpose</a></li><li><a href="#capabilities">3. Key capabilities</a></li><li><a href="#workflow">4. How it works</a></li><li><a href="#userguide">5. User guide</a></li><li><a href="#skills">6. Skills</a></li><li><a href="#prompt">7. Prompt to run</a></li><li><a href="#deliverables">8. Deliverables</a></li><li><a href="#governance">9. Governance and cost controls</a></li><li><a href="#faq">10. FAQ</a></li><li><a href="#troubleshooting">11. Troubleshooting</a></li><li><a href="#reference">12. Reference</a></li><li><a href="#tocomplete">13. Items to confirm</a></li></ol></nav><main>
+<section class="card" id="about"><h2>How to read this document</h2><p class="lead">This file combines the toolkit overview and the how-to guide into one standardized documentation page using the Security Group Manager documentation style.</p><div class="legend"><div><span class="tag verified">Verified</span> Content explicitly present in the source HTML files.</div><div><span class="tag confirm">Confirm</span> Operational detail that should be validated against your actual Cowork environment.</div><div><span class="tag placeholder">Fill in</span> Detail intentionally left for the owner to update.</div></div><div class="callout"><strong>Merge handling:</strong> Duplicate disclaimers, file-save notes, /cost explanations, governance statements, and deliverable descriptions were consolidated into one standard structure.</div></section>
+<section class="card" id="overview"><h2><span class="num">1</span> Overview</h2><p><strong>Cowork Access Review Toolkit</strong> <span class="tag verified">Verified</span> turns real Copilot Cowork activity into an evidence-based, governance-ready access request. It analyzes activity, identifies business use cases, compares AI surfaces, and creates an approval-ready package so reviewers can decide with evidence.</p><dl class="kv"><dt>Toolkit name</dt><dd>Cowork Access Review Toolkit <span class="tag verified">Verified</span></dd><dt>Primary surface</dt><dd>Copilot Cowork <span class="tag verified">Verified</span></dd><dt>Typical source location</dt><dd><code>Documents / Cowork</code> in OneDrive <span class="tag confirm">Confirm</span></dd><dt>Included skills</dt><dd><code>cowork-evidence-analyzer</code> and <code>cowork-access-request-builder</code> <span class="tag verified">Verified</span></dd></dl></section>
+<section class="card" id="purpose"><h2><span class="num">2</span> Business purpose</h2><p>The toolkit helps requestors and reviewers evaluate whether Copilot Cowork is justified for specific work by grounding the request in actual activity, evidence of business value, source quality, surface fit, and per-task credit usage.</p><div class="callout"><strong>Decision principle:</strong> Copilot Cowork is not treated as the default recommendation. The toolkit recommends the lowest-cost, best-fit AI surface that satisfies each use case and justifies Cowork only when it is materially better.</div></section>
+<section class="card" id="capabilities"><h2><span class="num">3</span> Key capabilities</h2><div class="feature-grid"><div class="mini-card"><h3>Discovers real activity</h3><p>Finds sessions, task runs, and saved deliverables in the OneDrive Cowork folder.</p></div><div class="mini-card"><h3>Groups work into use cases</h3><p>Organizes activity into distinct business use cases that can be reviewed independently.</p></div><div class="mini-card"><h3>Evaluates seven AI surfaces</h3><p>Compares Copilot Cowork, Copilot Chat, Agent Builder Pre-Built, Agent Builder Tuned, Agent Builder Custom, Copilot Studio, and Foundry.</p></div><div class="mini-card"><h3>Recommends best-fit surface</h3><p>Prioritizes the lowest-cost surface that satisfies the use case.</p></div><div class="mini-card"><h3>Builds review package</h3><p>Produces a Word request package and an Excel evidence workbook for submission.</p></div></div><table><caption>Evaluation dimensions</caption><thead><tr><th>Dimension</th><th>What it measures</th></tr></thead><tbody><tr><td>Ease of use</td><td>Effort to set up and operate.</td></tr><tr><td>Quality</td><td>Fit and output quality for the use case.</td></tr><tr><td>Efficiency</td><td>Speed and automation of the work.</td></tr><tr><td>Cost favorability</td><td>Relative cost band without global cost figures.</td></tr><tr><td>Governance fit</td><td>Data handling, controls, and compliance alignment.</td></tr></tbody></table></section>
+<section class="card" id="workflow"><h2><span class="num">4</span> How it works</h2><p>The toolkit workflow combines source coverage, evidence gathering, use-case grouping, surface evaluation, ranking, and package generation.</p><div class="step-grid" role="tablist" aria-label="Toolkit pipeline"><button class="step-btn" type="button" data-step="1"><span class="step-num">1</span>Source Coverage</button><button class="step-btn" type="button" data-step="2"><span class="step-num">2</span>Missing Info</button><button class="step-btn" type="button" data-step="3"><span class="step-num">3</span>Evidence Log</button><button class="step-btn" type="button" data-step="4"><span class="step-num">4</span>Recurring Tasks</button><button class="step-btn" type="button" data-step="5"><span class="step-num">5</span>Use Cases</button><button class="step-btn" type="button" data-step="6"><span class="step-num">6</span>Surface Evaluation</button><button class="step-btn" type="button" data-step="7"><span class="step-num">7</span>Ranking</button><button class="step-btn" type="button" data-step="8"><span class="step-num">8</span>Review Package</button></div><div id="stepDetail" role="tabpanel" aria-live="polite"><h3></h3><p></p></div></section>
+<section class="card" id="userguide"><h2><span class="num">5</span> User guide</h2><h3>Before you start</h3><ol><li>Confirm access to <strong>Copilot Cowork</strong>.</li><li>Add the following skills:<ul><li><code>cowork-evidence-analyzer</code></li><li><code>cowork-access-request-builder</code></li></ul></li><li>Open Copilot Cowork.</li><li>Navigate to Skills.</li><li>Create a new custom skill.</li><li>Copy the skill definition from the Skills section of this document.</li><li>Save the skill.</li><li>Repeat for both skills.</li><li>Confirm your Cowork content location, typically: <code>OneDrive / Documents / Cowork</code></li><li>Paste the prompt from the Prompt section and submit it.</li><li>Review the Source Coverage Check.</li><li>Select the use case to submit.</li><li>Run: <code>/cost</code></li><li>Paste the returned credit value.</li><li>Collect the generated Word and Excel deliverables.</li></ol></section>
+<section class="card" id="skills"><h2><span class="num">6</span> Skills</h2><p>The toolkit includes two custom Copilot Cowork skills. Add both skills before running the toolkit. Each skill can be copied directly from this page and pasted into Copilot Cowork when creating a custom skill.</p><h3><code>cowork-evidence-analyzer</code></h3><div class="promptwrap"><button class="copybtn" type="button" data-copy-target="skillEvidenceText" aria-label="Copy the cowork-evidence-analyzer skill to the clipboard">Copy</button><pre class="prompt" id="skillEvidenceText">---
+name: cowork-evidence-analyzer
+description: Analyze Copilot/Cowork usage, identify use cases, evaluate surfaces, and rank opportunities
+---
+
+You are a Copilot skill that analyzes usage evidence and identifies the best-fit AI surface for each business use case.
+
+### Goal
+Analyze available Copilot/Cowork activity and:
+- Identify business use cases
+- Evaluate surface fit
+- Highlight missing or weak evidence
+- Rank use cases by value and confidence
+
+### Core Behavior
+- Start with whatever data is available
+- Only request additional information if it materially impacts confidence or recommendation quality
+- Continue analysis even if data is partial or incomplete
+- Clearly label all assumptions and missing data impacts
+
+## Evidence Discovery Standards (REQUIRED — run BEFORE declaring any source missing)
+
+Do NOT tell the user a source is missing until you have *proven* absence. A single failed
+keyword search NEVER establishes absence. Complete ALL of the following first:
+
+1. Resolve the user's default OneDrive drive.
+2. Navigate **by path** to the user's OneDrive Cowork folder — typically `Documents › Cowork`
+   (on some accounts the documents library is named `Documents 1`). **Update the location if the
+   user's is different.** Enumerate its subfolders: `sessions/` (raw session inputs/outputs),
+   `Tasks/` (task runs, each with `input/` and `output/`), `skills/` (custom skills), and every
+   dated deliverable folder.
+3. **Fully paginate** every folder listing to the last page. Folders are alphabetical and
+   results are paged — a target (e.g. a `Cowork` folder) often sorts *past the first page*.
+4. Also check `Copilot`, `Copilot_Tuning_Content`, and any `AI-*` folders at the OneDrive root.
+5. Only after ALL of the above return nothing may a source be marked **Missing** — and then
+   list the exact paths you checked.
+
+When a source genuinely cannot be found, report what was checked, then ask the user. Never
+escalate to the user to compensate for an incomplete search. **"Not found yet" ≠ "does not exist."**
+
+### Governance Principles
+- Do not recommend Copilot Cowork by default
+- Recommend the lowest-cost, best-fit surface that satisfies the use case
+- Only justify Cowork when it is materially better than alternatives
+- Do not invent data
+- Clearly distinguish data types
+
+## Cost &amp; Credits Standards (REQUIRED)
+- **NEVER** include organization-wide / global credit totals or dollar costs in any output.
+  Express cost only as relative bands (Low / Medium / High / Unknown) **plus per-task credits**.
+- For the selected use case, capture **per-task credits** for that use case's task run(s) using
+  the `/cost` skill ("Show the credits used so far"). `/cost` is a UI command the **user** runs;
+  it cannot be invoked through the Skill tool. If you cannot obtain the figure, ask the user to
+  run `/cost` (triggering a run of the specific task if needed) and report the value.
+- **Attribute every credit figure to the specific task run it came from.** Never present one
+  task's credits as another's.
+- Map the per-task credit figure to a **Light / Medium / Heavy** consumption rating aligned to the
+  Cowork Credit Estimator tiers (Light ≈125, Medium ≈500, Heavy ≈1,200 credits per task).
+
+## Disclaimers (REQUIRED in every output)
+- **AI-generated:** state that the analysis and any package were created by an AI assistant and
+  that the user should review all outputs for accuracy before relying on or submitting them.
+- **Generalized cost:** state that all cost references are generalized estimates / relative bands
+  (not a quote or invoice) and should be validated against the tenant's actual pricing.
+
+### Surface Evaluation
+Evaluate each use case across:
+- Usability
+- Quality
+- Efficiency
+- Cost favorability
+- Governance fit
+
+Surfaces:
+- Copilot Cowork
+- Copilot Chat
+- Agent Builder Pre-Built Template
+- Agent Builder Tuned Model
+- Agent Builder Custom Agent
+- Copilot Studio
+- Foundry Agent
+
+### Outputs
+1. Evidence summary (Source Coverage Check)
+2. Business use cases
+3. Surface evaluation
+4. Ranked use cases
+
+### Final Rules
+- Be factual and concise
+- Do not invent data
+- Clearly state missing data impact
+- Do not present user-provided substitute evidence as system-found actual data
+</pre><span class="live" id="skillEvidenceStatus" role="status" aria-live="polite"></span></div><h3><code>cowork-access-request-builder</code></h3><div class="promptwrap"><button class="copybtn" type="button" data-copy-target="skillBuilderText" aria-label="Copy the cowork-access-request-builder skill to the clipboard">Copy</button><pre class="prompt" id="skillBuilderText">---
+name: cowork-access-request-builder
+description: Build approval-ready Copilot Cowork access request
+---
+
+You are a Copilot skill that prepares a Copilot Cowork access request using actual usage evidence.
+
+## Instructions
+1. Review the user's Copilot Cowork activity
+2. Group activity into business use cases
+3. Estimate business value (time saved, impact)
+4. Check alternative AI tools
+5. Recommend best-fit AI surface
+6. Rank use cases by value and fit
+7. Ask the user to select which use case to submit
+
+## Output
+Return results in this format:
+
+### Ranked Use Cases
+- Use case:
+- Value:
+- Recommended surface:
+- Cowork required: Yes / No
+
+STOP and ask the user:
+
+"Which use case do you want to submit?"
+
+---
+
+After selection, build the Request Package **and the two deliverable files** per the standards below.
+
+## Package Output Standards (REQUIRED)
+
+Always produce BOTH deliverables for the selected use case and save them to `output/`:
+- a **Word document** (the request package), and
+- an **Excel workbook** (the backing evidence analysis). Always include the Excel file and
+  reference it from the Word document.
+
+### Word document
+- **Footer on every page:** "Generated by the cowork-evidence-analyzer — &lt;today's date&gt;".
+- **Request Summary** and **Reviewer Decision Support** BOTH include:
+  - the per-task Cowork **credits** (via `/cost`), attributed to the specific task run;
+  - a **Light / Medium / Heavy consumption rating** aligned to the Cowork Credit Estimator
+    (Light ≈125, Medium ≈500, Heavy ≈1,200 credits per task); and
+  - a **credits-to-hours-saved ratio** (per-task credits ÷ hours saved). Compute the ratio with
+    a code tool, not by hand.
+- Sections: Request Summary · Business Justification · Evidence Used · Source Quality Matrix ·
+  Value Estimate · Surface Evaluation (7-surface matrix) · Alternatives Considered ·
+  Cost &amp; Governance · Reviewer Decision Support · Copy/Paste Request Text.
+- **Copy/Paste Request Text:** render each field as a **bold label on its own line** with its
+  **value on a separate indented line beneath it** (NOT "Label: value" on one line) so values
+  paste cleanly into intake forms.
+- **Disclaimers:** include an **AI-generated** disclaimer (content created by an AI assistant;
+  review before relying on or submitting) and a **generalized-cost** disclosure (cost references
+  are generalized estimates / relative bands, not a quote or invoice).
+
+### Excel workbook
+- Sheets: Read Me · Cowork Request · Source Coverage · Activity Evidence Log · Recurring Tasks ·
+  Use Cases · Surface Eval (selected UC) · Surface Recommendations · Use Case Ranking.
+- **Cowork Request** sheet: the copy/paste request as **label/value pairs, each in its own cell**
+  (including the consumption rating and credits-to-hours-saved ratio).
+- **Read Me** sheet: a requestor identity block — name, **correct title**, email, manager
+  name/title/email, department, business line, expected value — plus ONE summarized
+  "Evidence provenance &amp; status" line (do not paste long allowed-value lists). Keep the
+  **Source Coverage** sheet as the detailed home of the Where-it-came-from / Status vocabulary.
+- Surface-eval Totals are live SUM formulas; recalculate and verify **zero** formula errors.
+
+## Cost &amp; Credits Standards (REQUIRED)
+- **NEVER** include organization-wide / global credit totals or dollar costs. Per-task credits +
+  relative cost bands only.
+- Capture per-task credits via the `/cost` skill (a UI command the **user** runs; it cannot be
+  invoked through the Skill tool). If unavailable, ask the user to run `/cost` (triggering the
+  specific task run if needed) and report the value.
+- **Attribute every credit figure to the specific task run.** Never present one task's credits as another's.
+
+## Allowed values (provenance / status fields)
+"Where the Information Came From": Actual data found and used · Actual data missing; user provided
+substitute data · Actual data missing; user chose to skip · Actual data partially found and
+supplemented by user · Actual data partially found; user chose to continue without supplement ·
+Not applicable to this use case.
+
+"Status": Used · Partially used · Missing - user provided substitute · Missing - skipped by user ·
+Not applicable.
+
+## Rules
+- Do not recommend Cowork by default; recommend the lowest-cost, best-fit surface that satisfies the use case
+- Each use case must be submitted separately
+- Be concise and reviewer-friendly
+- Do not invent data; clearly label estimates and user-provided substitute evidence
+- Do not present user-provided substitute evidence as system-found actual data
+</pre><span class="live" id="skillBuilderStatus" role="status" aria-live="polite"></span></div></section>
+<section class="card" id="prompt"><h2><span class="num">7</span> Prompt to run</h2><p>Update the start date and folder location before running the prompt.</p><div class="promptwrap"><button class="copybtn" id="copyBtn" type="button" aria-label="Copy the prompt to the clipboard">Copy</button><pre class="prompt" id="promptText">Run the cowork-evidence-analyzer, then the cowork-access-request-builder skill.
+
+Prepare a Copilot Cowork access review package using my actual Copilot Cowork activity
+from &lt;START DATE — e.g. April 1, 2026&gt; to today.
+
+Help reviewers decide:
+1. What business use cases I used Cowork for
+2. What evidence supports them
+3. What business value was delivered
+4. Whether Copilot Cowork is justified
+5. Whether a lower-cost, best-fit AI surface is a better choice
+6. What source information was used, missing, substituted, or skipped
+
+Rules:
+- Search my OneDrive Cowork folder exhaustively (sessions, Tasks, skills, deliverables) before
+  reporting any evidence as missing. My Cowork content is in "Documents / Cowork" — update this
+  location if yours is different.
+- Copilot Cowork is NOT the default. Recommend the lowest-cost, best-fit surface that satisfies
+  each use case (Copilot Chat, Agent Builder Pre-Built/Tuned/Custom, Copilot Studio, or Foundry),
+  and justify Cowork only when it is materially better.
+- Evaluate every use case across ease of use, quality, efficiency, cost, and governance fit.
+- Capture per-task credits with the /cost command. Do NOT include any global or
+  organization-wide credit or cost figures.
+- After I select a use case, produce a Word request package and an Excel evidence workbook with
+  the per-task credits, a Light/Medium/Heavy consumption rating (Cowork Credit Estimator tiers),
+  and a credits-to-hours-saved ratio.</pre><span class="live" id="liveStatus" role="status" aria-live="polite"></span></div></section>
+<section class="card" id="deliverables"><h2><span class="num">8</span> Deliverables</h2><table><thead><tr><th>Deliverable</th><th>Included content</th></tr></thead><tbody><tr><td>Word request package</td><td>Request summary, business justification, evidence, source-quality matrix, seven-surface evaluation, reviewer decision support, and copy/paste request block.</td></tr><tr><td>Excel evidence workbook</td><td>Cowork Request sheet, activity evidence log, surface scores, and Read Me with requestor identity block.</td></tr></tbody></table></section>
+<section class="card" id="governance"><h2><span class="num">9</span> Governance and cost controls</h2><div class="chip-row"><span class="chip">Cowork is never the default</span><span class="chip">Per-task credits only</span><span class="chip">No global cost figures</span><span class="chip">Lowest-cost, best-fit surface wins</span></div><div class="callout warn"><strong>AI-generated content:</strong> Review every toolkit output for accuracy and completeness before relying on it or submitting it.</div><div class="callout warn"><strong>Cost disclosure:</strong> Cost references are generalized estimates and relative bands, not a quote, invoice, or commitment. Per-task credits come from <code>/cost</code>; validate against actual tenant pricing.</div></section>
+<section class="card" id="faq"><h2><span class="num">10</span> FAQ</h2><details class="q"><summary><span>What is <code>/cost</code>?</span></summary><div class="a">A Copilot command that shows the credits a task has used. You run it yourself and paste the number so the package reflects real per-task usage. No global or organization-wide cost figures are included.</div></details><details class="q"><summary>Why is Cowork not the recommendation by default?</summary><div class="a">The toolkit recommends the lowest-cost, best-fit surface that satisfies the use case and justifies Copilot Cowork only when it is materially better than alternatives.</div></details><details class="q"><summary>Where do my files save?</summary><div class="a">They save to the Cowork output folder, which syncs to the OneDrive Cowork folder, typically <code>Documents / Cowork</code>. Update the location reference if yours is different.</div></details><details class="q"><summary>Can I submit more than one use case?</summary><div class="a">Yes. Each use case is packaged and submitted separately so reviewers can decide on each independently.</div></details><details class="q"><summary>How do I install the skills?</summary><div class="a"><ol><li>Open Copilot Cowork.</li><li>Open Skills.</li><li>Create a new custom skill.</li><li>Copy the skill definition from the Skills section in this document.</li><li>Save the skill.</li><li>Repeat for:<ul><li><code>cowork-evidence-analyzer</code></li><li><code>cowork-access-request-builder</code></li></ul></li></ol></div></details></section>
+<section class="card" id="troubleshooting"><h2><span class="num">11</span> Troubleshooting</h2><table><thead><tr><th>Symptom</th><th>Likely cause</th><th>Resolution</th></tr></thead><tbody><tr><td>Evidence is marked missing</td><td>The source coverage check did not find a specific source.</td><td>Provide the missing source or instruct the toolkit to continue without it.</td></tr><tr><td>Output cost details are incomplete</td><td>The <code>/cost</code> value was not pasted when prompted.</td><td>Run <code>/cost</code> for the task and paste the per-task credits value.</td></tr><tr><td>Files are not where expected</td><td>The Cowork folder path may differ from the default reference.</td><td>Update the prompt with the actual Cowork folder location.</td></tr></tbody></table></section>
+<section class="card" id="reference"><h2><span class="num">12</span> Reference</h2><table><thead><tr><th>Item</th><th>Value</th></tr></thead><tbody><tr><td>Source file 1</td><td><code>cowork-tool-overview.html</code></td></tr><tr><td>Source file 2</td><td><code>cowork-how-to-use.html</code></td></tr><tr><td>Generated file</td><td><code>Cowork-Access-Review-Toolkit-Documentation.htm</code></td></tr></tbody></table></section>
+<section class="card" id="tocomplete"><h2><span class="num">13</span> Items to confirm</h2><ul><li>Confirm the exact Cowork folder location for your environment.</li><li>Confirm the skill installation path and process against your organization’s current Copilot skill-management guidance.</li><li>Confirm whether the output folder naming convention should be documented.</li><li>Confirm whether screenshots should be embedded for the Cowork UI steps.</li></ul></section>
+</main></div><footer class="docfoot"><p>Cowork Access Review Toolkit - AI-generated content should be reviewed before use.</p></footer>
+<script>
+(function(){var stepData={'1':['Source Coverage Check','Confirms which evidence sources exist - session history, saved outputs, usage, recurring tasks, and deliverables - searching the Cowork folder exhaustively before reporting anything as missing.'],'2':['Missing-Info Branch','If something genuinely cannot be found, the toolkit tells you what was checked and offers the choice to provide it or continue without it.'],'3':['Activity Evidence Log','Each distinct piece of work becomes a logged activity with goal, inputs, outputs, evidence of value, gaps, and confidence.'],'4':['Recurring-Task Review','Scheduled or repeatable work is reviewed for current value and whether it should move to a different surface.'],'5':['Business Use Cases','Activities are grouped into separate business use cases, each with audience, evidence strength, and value.'],'6':['Surface Evaluation','Every use case is scored across seven AI surfaces on ease, quality, efficiency, cost, and governance fit.'],'7':['Ranking','Use cases are ranked by value, evidence, fit, cost, governance, and confidence, with a recommended surface for each.'],'8':['Review Package','For the selected use case, a Word request package and Excel evidence workbook are produced for review.']};var detail=document.getElementById('stepDetail');var h3=detail?detail.querySelector('h3'):null;var p=detail?detail.querySelector('p'):null;var buttons=Array.prototype.slice.call(document.querySelectorAll('.step-btn'));function select(n){buttons.forEach(function(b){b.classList.toggle('active',b.getAttribute('data-step')===n);});if(h3&&p){h3.textContent=stepData[n][0];p.textContent=stepData[n][1];}}buttons.forEach(function(b){b.addEventListener('click',function(){select(b.getAttribute('data-step'));});});if(buttons.length){select('1');}var copyBtn=document.getElementById('copyBtn');var pre=document.getElementById('promptText');var live=document.getElementById('liveStatus');function flash(msg){var orig='Copy';copyBtn.textContent=msg;if(live){live.textContent=msg;}setTimeout(function(){copyBtn.textContent=orig;},2000);}function fallback(text){var ta=document.createElement('textarea');ta.value=text;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();var ok=false;try{ok=document.execCommand('copy');}catch(e){ok=false;}document.body.removeChild(ta);flash(ok?'Copied!':'Press Ctrl+C');}if(copyBtn&&pre){copyBtn.addEventListener('click',function(){var text=pre.textContent;if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){flash('Copied!');},function(){fallback(text);});}else{fallback(text);}});}})();
+</script>
+
+<script>
+(function(){
+  function flashButton(btn,msg){var orig=btn.textContent||'Copy';btn.textContent=msg;setTimeout(function(){btn.textContent=orig;},2000);}
+  function fallbackCopy(btn,text){var ta=document.createElement('textarea');ta.value=text;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();var ok=false;try{ok=document.execCommand('copy');}catch(e){ok=false;}document.body.removeChild(ta);flashButton(btn,ok?'Copied!':'Press Ctrl+C');}
+  Array.prototype.slice.call(document.querySelectorAll('.copybtn[data-copy-target]')).forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var target=document.getElementById(btn.getAttribute('data-copy-target'));
+      if(!target){flashButton(btn,'Not found');return;}
+      var text=target.textContent;
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){flashButton(btn,'Copied!');},function(){fallbackCopy(btn,text);});}
+      else{fallbackCopy(btn,text);}
+    });
+  });
+})();
+</script>
+</body></html>
