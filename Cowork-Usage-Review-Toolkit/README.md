@@ -1,103 +1,297 @@
+# Copilot
+
+A collection of Microsoft Copilot solutions, governance tools, prompts, skills, templates, and automation assets designed to help organizations maximize business value while maintaining responsible AI practices, security, and governance.
+
 ---
-name: cowork-usage-review-toolkit
-description: Analyze Copilot/Cowork usage, identify use cases, evaluate surfaces, and rank opportunities
+
+# Cowork Access Review Toolkit
+
+The **Cowork Access Review Toolkit** transforms actual Copilot Cowork activity into an evidence-based, governance-ready access review package.
+
+Rather than relying on assumptions or generic business justifications, the toolkit analyzes real usage, identifies business use cases, evaluates AI alternatives, and generates reviewer-ready documentation to support informed access decisions.
+
 ---
 
-You are a Copilot skill that analyzes usage evidence and identifies the best-fit AI surface for each business use case.
+## Quick Start
 
-### Goal
+### 1. Download the Toolkit
 
-Analyze available Copilot/Cowork activity and:
-- Identify business use cases
-- Evaluate surface fit
-- Highlight missing or weak evidence
-- Rank use cases by value and confidence
+Download the latest version of:
 
-### Core Behavior
+```text
+Cowork-Access-Review-Toolkit.html
+```
 
-- Start with whatever data is available
-- Only request additional information if it materially impacts confidence or recommendation quality
-- Continue analysis even if data is partial or incomplete
-- Clearly label all assumptions and missing data impacts
+from this repository.
 
-## Evidence Discovery Standards (REQUIRED — run BEFORE declaring any source missing)
+### 2. Open the HTML File
 
-Do NOT tell the user a source is missing until you have *proven* absence. A single failed keyword search NEVER establishes absence. Complete ALL of the following first:
+The toolkit is delivered as a **self-contained HTML application**.
 
-1. Resolve the user's default OneDrive drive.
-2. Navigate **by path** to the user's OneDrive Cowork folder — typically `Documents › Cowork`
-   (on some accounts the documents library is named `Documents 1`). **Update the location if the
-   user's is different.** Enumerate its subfolders: `sessions/` (raw session inputs/outputs),
-   `Tasks/` (task runs, each with `input/` and `output/`), `skills/` (custom skills), and every
-   dated deliverable folder.
-3. **Fully paginate** every folder listing to the last page. Folders are alphabetical and
-   results are paged — a target (e.g. a `Cowork` folder) often sorts *past the first page*.
-4. Also check `Copilot`, `Copilot_Tuning_Content`, and any `AI-*` folders at the OneDrive root.
-5. Only after ALL of the above return nothing may a source be marked **Missing** — and then
-   list the exact paths you checked.
+No installation is required.
 
-When a source genuinely cannot be found, report what was checked, then ask the user. Never
-escalate to the user to compensate for an incomplete search. **"Not found yet" ≠ "does not exist."**
+Simply:
 
-### Governance Principles
+1. Download the HTML file
+2. Save it locally
+3. Open it in your preferred web browser
 
-- Do not recommend Copilot Cowork by default
-- Recommend the lowest-cost, best-fit surface that satisfies the use case
-- Only justify Cowork when it is materially better than alternatives
-- Do not invent data
-- Clearly distinguish data types
+Supported browsers include:
 
-## Cost & Credits Standards (REQUIRED)
+- Microsoft Edge
+- Google Chrome
+- Mozilla Firefox
 
-- **NEVER** include organization-wide / global credit totals or dollar costs in any output.
-  Express cost only as relative bands (Low / Medium / High / Unknown) **plus per-task credits**.
-- For the selected use case, capture **per-task credits** for that use case's task run(s) using
-  the `/cost` skill ("Show the credits used so far"). `/cost` is a UI command the **user** runs;
-  it cannot be invoked through the Skill tool. If you cannot obtain the figure, ask the user to
-  run `/cost` (triggering a run of the specific task if needed) and report the value.
-- **Attribute every credit figure to the specific task run it came from.** Never present one
-  task's credits as another's.
-- Map the per-task credit figure to a **Light / Medium / Heavy** consumption rating aligned to the
-  Cowork Credit Estimator tiers (Light ≈125, Medium ≈500, Heavy ≈1,200 credits per task).
+### 3. Follow the Embedded Instructions
 
-## Disclaimers (REQUIRED in every output)
+The toolkit contains:
 
-- **AI-generated:** state that the analysis and any package were created by an AI assistant and
-  that the user should review all outputs for accuracy before relying on or submitting them.
-- **Generalized cost:** state that all cost references are generalized estimates / relative bands
-  (not a quote or invoice) and should be validated against the tenant's actual pricing.
+- Overview documentation
+- Installation guidance
+- Skill definitions
+- Configuration instructions
+- Example prompts
+- Usage workflows
 
-### Surface Evaluation
+### 4. Install the Included Skills (Optional)
 
-Evaluate each use case across:
+If using the toolkit with Copilot Cowork, install the included custom skills found in the repository.
 
-- Usability
-- Quality
-- Efficiency
-- Cost favorability
-- Governance fit
+### 5. Execute the Analysis Prompt
 
-Surfaces:
+Use the provided prompt to analyze Copilot Cowork activity and generate an evidence-based access review package.
+
+---
+
+## What Problem Does This Solve?
+
+Organizations increasingly need to answer questions such as:
+
+- What work is Copilot Cowork actually being used for?
+- What business value is being delivered?
+- Should premium AI access be approved?
+- Would another AI platform provide similar value at a lower cost?
+- How can governance teams make objective decisions?
+
+The Cowork Access Review Toolkit helps answer these questions using actual activity and evidence rather than assumptions.
+
+---
+
+## Key Capabilities
+
+### Discovers Real Activity
+
+Identifies and reviews:
+
+- Copilot Cowork sessions
+- Task executions
+- Saved deliverables
+- Generated outputs
+- Reusable skills
+
+### Groups Work into Business Use Cases
+
+Organizes activity into meaningful business scenarios such as:
+
+- Documentation generation
+- Project planning
+- Business analysis
+- Governance reviews
+- Architecture assessments
+- Operational automation
+
+### Evaluates Multiple AI Surfaces
+
+Compares solutions across:
 
 - Copilot Cowork
 - Copilot Chat
-- Agent Builder Pre-Built Template
-- Agent Builder Tuned Model
-- Agent Builder Custom Agent
+- Agent Builder (Pre-Built)
+- Agent Builder (Tuned)
+- Agent Builder (Custom)
 - Copilot Studio
-- Foundry Agent
+- Foundry Agents
 
-### Outputs
+### Recommends Best-Fit Platforms
 
-1. Evidence summary (Source Coverage Check)
-2. Business use cases
-3. Surface evaluation
-4. Ranked use cases
+The toolkit does **not** assume Copilot Cowork is the correct answer.
 
-### Final Rules
+Recommendations are based on:
 
-- Be factual and concise
-- Do not invent data
-- Clearly state missing data impact
-- Do not present user-provided substitute evidence as system-found actual data
+- Ease of use
+- Quality
+- Efficiency
+- Governance fit
+- Relative cost
 
+### Generates Governance Artifacts
+
+Produces reviewer-ready deliverables including:
+
+- Access review packages
+- Evidence workbooks
+- Business justifications
+- Surface evaluations
+- Governance recommendations
+
+---
+
+## Governance Principles
+
+The toolkit follows several core principles:
+
+✅ Evidence-based decision making
+
+✅ Actual usage analysis
+
+✅ Business value justification
+
+✅ Cost awareness
+
+✅ Governance-first recommendations
+
+✅ Transparency of assumptions
+
+✅ Alternative solution evaluation
+
+### Important Principle
+
+> Copilot Cowork is never treated as the default recommendation.
+
+The toolkit recommends the lowest-cost, best-fit AI surface capable of delivering the required outcome.
+
+---
+
+## Repository Structure
+
+```text
+Copilot/
+│
+├── Access-Review-Toolkit/
+│   ├── Documentation/
+│   │   └── Cowork-Access-Review-Toolkit.html
+│   │
+│   ├── Skills/
+│   │   ├── cowork-usage-review-toolkit.md
+│   │   └── cowork-access-request-builder.md
+│   │
+│   ├── Prompts/
+│   │
+│   ├── Templates/
+│   │
+│   ├── Samples/
+│   │
+│   └── Images/
+│
+├── Agents/
+├── Agent-Builder/
+├── Copilot-Studio/
+├── Governance/
+├── Prompt-Library/
+├── Training/
+├── Tools/
+└── Scripts/
+```
+
+---
+
+## Included Assets
+
+| Asset | Purpose |
+|---------|---------|
+| Cowork-Access-Review-Toolkit.html | Main toolkit application |
+| Skills | Copilot Cowork skill definitions |
+| Prompts | Example prompts and workflows |
+| Templates | Review package templates |
+| Samples | Example outputs |
+| Documentation | Supporting documentation |
+
+---
+
+## Typical Workflow
+
+```text
+Copilot Activity
+        │
+        ▼
+Evidence Discovery
+        │
+        ▼
+Business Use Cases
+        │
+        ▼
+Surface Evaluation
+        │
+        ▼
+Solution Recommendation
+        │
+        ▼
+Governance Review Package
+```
+
+---
+
+## Intended Audience
+
+This repository is intended for:
+
+- AI Governance Teams
+- Power Platform Centers of Excellence
+- Enterprise Architects
+- Solution Architects
+- Technology Leaders
+- Platform Administrators
+- AI Champions
+- Business Analysts
+- Copilot Adoption Teams
+
+---
+
+## Areas of Focus
+
+- Microsoft Copilot
+- Microsoft 365 Copilot
+- Copilot Cowork
+- Copilot Studio
+- Agent Builder
+- Enterprise AI
+- AI Governance
+- Responsible AI
+- Prompt Engineering
+- AI Adoption
+- Digital Transformation
+- Power Platform Governance
+- Automation
+
+---
+
+## Contributing
+
+Contributions are welcome.
+
+When contributing:
+
+- Include documentation
+- Provide usage guidance
+- Follow governance best practices
+- Clearly document prerequisites
+- Use consistent naming conventions
+- Include sample outputs when appropriate
+
+---
+
+## Disclaimer
+
+This repository contains sample solutions, prompts, templates, governance assets, and technical guidance intended for educational and operational purposes.
+
+Review and validate all outputs, recommendations, generated content, governance decisions, and cost considerations before relying on them in production environments.
+
+AI-generated content should always be reviewed by an appropriate human reviewer prior to submission or publication.
+
+---
+
+## Topics
+
+```text
+copilot,microsoft-copilot,microsoft-365-copilot,copilot-cowork,copilot-studio,agent-builder,agents,ai-governance,enterprise-ai,responsible-ai,prompt-engineering,power-platform,automation,digital-transformation,governance-toolkit,ai-adoption
+```
