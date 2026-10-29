@@ -1,303 +1,114 @@
 # AI Business Use Cases and Success Metrics
 
-> **Outcome first. AI second.** Start with the business decision, workflow, baseline, target, owner, and evidence. Select the AI pattern only after the value case is clear.
-
-A practical, repository-ready reference for identifying recurring AI business patterns, choosing meaningful measures, calculating value, and agreeing on success before design and development begin.
-
----
-
-## Contents
-
-- [1. Frequently Encountered AI Business Use Cases](#1-frequently-encountered-ai-business-use-cases)
-- [2. Functional Use-Case Catalog and Baselines](#2-functional-use-case-catalog-and-baselines)
-- [3. Business Outcome Categories](#3-business-outcome-categories)
-- [4. Balanced AI Success Metric Stack](#4-balanced-ai-success-metric-stack)
-- [5. Establish the Current-State Foundation](#5-establish-the-current-state-foundation)
-- [6. Define Success Before Development](#6-define-success-before-development)
-- [7. Agent ROI Model](#7-agent-roi-model)
-- [8. Prioritization and Metric Contract](#8-prioritization-and-metric-contract)
-- [9. Worked Example](#9-worked-example-ai-assisted-benefits-document-processing)
-- [10. Executive Readiness Checklist](#10-executive-readiness-checklist)
-- [References](#references)
-
----
-
-## 1. Frequently Encountered AI Business Use Cases
-
-> These are recurring enterprise patterns, not a universal frequency ranking. Actual priority should be based on workflow volume, business impact, feasibility, risk, and user desirability.
-
-### Decision rule
-
-- Use **conventional automation** for stable, deterministic rules.
-- Use **retrieval** for grounded question answering over a known corpus.
-- Use **analytical AI** for prediction, recommendation, and detection.
-- Use **generative AI** for synthesis, creation, and transformation.
-- Use **agents** when work requires multistep reasoning, tools, actions, or orchestration.
-
-### 1.1 Enterprise search and knowledge assistance
-
-**Category:** Knowledge and insight
-
-Ground answers in approved policies, product information, procedures, and operational knowledge.
-
-- Policy Q&A and internal support
-- Research synthesis
-- Expert and content discovery
-
-### 1.2 Drafting, summarization, and transformation
-
-**Category:** Content
-
-Create or refine emails, proposals, reports, meeting notes, presentations, and structured records with human review.
-
-- Executive summaries
-- Proposal and campaign drafts
-- Translation and tone adaptation
-
-### 1.3 Process automation and agentic work
-
-**Category:** Workflow
-
-Coordinate information, apply rules, call tools, update systems, and route exceptions across a multistep process.
-
-- Case intake and triage
-- Service-request fulfillment
-- Onboarding orchestration
-
-### 1.4 Document and unstructured data processing
-
-**Category:** Documents
-
-Extract, classify, normalize, validate, and compare information from forms, PDFs, images, contracts, and correspondence.
-
-- Claims and policy extraction
-- Contract clause review
-- Invoice and form processing
-
-### 1.5 Prediction, detection, and decision support
-
-**Category:** Analytics
-
-Estimate outcomes, highlight anomalies, recommend next actions, and improve planning with governed data.
-
-- Demand and risk prediction
-- Fraud or anomaly detection
-- Forecast and scenario analysis
-
-### 1.6 Customer and employee service
-
-**Category:** Experience
-
-Provide contextual assistance, suggested responses, self-service, and next-best actions in the flow of work.
-
-- Customer-service copilots
-- Employee-help assistants
-- Personalized guidance
-
-### 1.7 Software and quality engineering
-
-**Category:** Engineering
-
-Accelerate code, test design, documentation, review, incident analysis, and operational troubleshooting.
-
-- Code and test generation
-- Defect classification
-- Runbook and incident support
-
-### 1.8 Sales, marketing, and product intelligence
-
-**Category:** Growth
-
-Improve account research, segmentation, content, opportunity insight, product feedback, and experimentation.
-
-- Account and market briefs
-- Campaign personalization
-- Voice-of-customer themes
-
-### 1.9 Compliance, assurance, and monitoring
-
-**Category:** Risk and control
-
-Surface control gaps, compare evidence, monitor policy adherence, and prioritize human review.
-
-- Control-evidence review
-- Policy and regulatory mapping
-- Quality and safety monitoring
-
----
-
-## 2. Functional Use-Case Catalog and Baselines
-
-Use **track measures** to monitor the future-state workflow. Capture **baseline measures** before development so that changes can be attributed and quantified.
-
-| # | Function | Track | Baseline |
-|---:|---|---|---|
-| 01 | **Customer Service** | Session resolution, first-contact resolution, CSAT, escalation drivers | Contact volume, handle time, representative cost per hour |
-| 02 | **HR and Employee Operations** | Tier-1 deflection, time to answer, ticket reopen rate | HR ticket volume, response time, HR specialist cost |
-| 03 | **IT Service and Development** | Resolution rate, mean time to resolution, developer unblock time | Ticket volume, L1/L2 MTTR, developer hours spent on toolchain work |
-| 04 | **Finance and Invoice** | Touchless rate, cycle time, exception rate | Invoice volume, cycle time, review hours per 1,000 invoices |
-| 05 | **Procurement and Intake** | First-time-right routing, cycle time, compliance | Requisition volume, cycle time, routing error rate |
-| 06 | **Knowledge and Documents** | Time to first answer, citation accuracy | Current time to answer, citation rate, knowledge-base abandonment |
-| 07 | **Sales and Account Management** | Seller active days, meeting-to-pipeline conversion | Seller administration hours, pipeline velocity, win rate |
-| 08 | **Marketing and Content** | Content throughput, time to first draft | Hours per asset, campaign lead time, rework rate |
-| 09 | **Legal and Contracts** | Contract cycle time, draft turnaround, redline volume | Cycle time, attorney hours, outside counsel spend |
-| 10 | **Executive Productivity** | Email-triage time, meeting preparation, response latency | Executive hours on routine work, email backlog, presentation preparation |
-| 11 | **Project Management** | Status cycle, stakeholder latency, RAID accuracy | Project-manager hours on reporting, schedule variance |
-| 12 | **Field Service** | First-time fix rate, time on site, report compliance | Reports per technician, on-site time, first-time fix rate |
-| 13 | **PR and Communications** | Time to draft, time to approval, sentiment trend | Hours per release, sentiment baseline, crisis clock |
-| 14 | **Product Management** | PRD cycle, call-synthesis rate, roadmap cadence | Product-manager hours per PRD, calls logged versus synthesized |
-| 15 | **Cybersecurity and SOC** | Mean time to detect, mean time to respond, incident-report turnaround | MTTD/MTTR baseline, incidents per analyst per week |
-| 16 | **Supply Chain and Warehouse** | Shift-handover latency, incident reporting, inventory accuracy | Supervisor hours, incidents per week, inventory accuracy |
-
----
-
-## 3. Business Outcome Categories
-
-Classify each opportunity by both its **business outcome** and its **AI solution pattern**. This prevents teams from treating every opportunity as a chatbot or agent.
-
-| Business outcome | Typical intent | Common AI pattern | Primary evidence | Watch-out |
-|---|---|---|---|---|
-| **Grow revenue** | Increase conversion, retention, cross-sell, or speed to market | Recommendation, personalization, research, generative content | Incremental revenue, conversion lift, retention, pipeline velocity | Separate the AI contribution from seasonality and campaign effects |
-| **Reduce cost or effort** | Remove manual work, rework, handling time, and avoidable demand | Document AI, workflow automation, copilots, agents | Validated hours saved, unit cost, automation rate, rework reduction | Do not count theoretical time savings without volume and validation |
-| **Improve speed** | Shorten cycle time, response time, resolution time, or time to insight | Summarization, retrieval, routing, decision assistance | Median cycle time, SLA attainment, queue time, throughput | Faster is not better if quality or controls deteriorate |
-| **Improve quality** | Increase accuracy, completeness, consistency, and decision quality | Classification, extraction, grounding, evaluation, human review | Error rate, first-pass yield, precision, recall, acceptance rate | Define the ground truth and material error types before testing |
-| **Improve experience** | Reduce friction and increase customer or employee satisfaction | Conversational assistance, personalized guidance, self-service | CSAT, effort score, containment, adoption, task success | Usage alone does not prove a better experience |
-| **Manage risk** | Strengthen compliance, traceability, safety, and control execution | Detection, monitoring, evidence review, policy mapping | Control coverage, incident rate, false negatives, review time | High-impact decisions require explicit human accountability |
-
----
-
-## 4. Balanced AI Success Metric Stack
-
-A healthy scorecard connects solution performance to adoption, operational outcomes, and business impact while retaining risk and cost guardrails.
-
-### Layer 1: Solution performance
-
-**Question:** Does the solution work?
-
-- Task-success rate
-- Accuracy and groundedness
-- Precision, recall, and F1 score
-- Latency and availability
-- Cost per successful task
-- Human-override rate
-
-### Layer 2: Adoption
-
-**Question:** Do people use the solution effectively and repeatedly?
-
-- Eligible users and active users
-- Repeat and sustained use
-- Completion and abandonment
-- Feature or workflow penetration
-- User confidence and satisfaction
-- Training-to-adoption conversion
-
-### Layer 3: Operational outcomes
-
-**Question:** Does the process improve?
-
-- Cycle time and handling time
-- Throughput and backlog
-- Automation or containment rate
-- Error and rework rate
-- SLA attainment
-- Escalation and exception rates
-
-### Layer 4: Business impact
-
-**Question:** Is value realized safely?
-
-- Revenue or conversion lift
-- Validated hours saved
-- Cost avoided or unit-cost reduction
-- Customer or employee outcomes
-- Risk incidents and control coverage
-- ROI, payback period, and value density
-
-> **Leading versus lagging indicators:** Task success, latency, usage, and acceptance can reveal early problems. Cost, revenue, retention, satisfaction, and risk outcomes typically require a longer measurement window. Define both, but make a lagging business outcome the ultimate decision criterion.
-
----
-
-## 5. Establish the Current-State Foundation
-
-Complete these four activities before solution design. Together, the activities produce the current-state document that subsequent prioritization, metric selection, and investment decisions reference.
-
-### 01. Business goal
-
-**Question:** What business challenge is the AI solution addressing?
-
-Define the desired outcome, current constraint, and strategic reason to act.
-
-### 02. Stakeholder map
-
-**Question:** Who benefits, and what matters to each stakeholder?
-
-Name the users, customers, owners, approvers, reviewers, and affected teams.
-
-### 03. Current state
-
-**Question:** What is measured today, and what is not?
-
-Map workflow steps, volumes, delays, quality, controls, exceptions, systems of record, and evidence gaps.
-
-### 04. Baseline
-
-**Question:** Which three numbers must be captured before anything is built?
-
-At minimum, capture:
-
-1. **Volume**: transactions, cases, documents, requests, users, or events.
+> A practical framework for selecting high-value AI opportunities, establishing measurable baselines, defining success before development, and evaluating realized business value.
+
+[![Documentation](https://img.shields.io/badge/docs-framework-1677ff)](docs/ai-business-use-cases-and-success-metrics.md)
+![Focus](https://img.shields.io/badge/focus-AI%20value%20realization-27a783)
+![Format](https://img.shields.io/badge/format-Markdown-59636e)
+
+## Overview
+
+This repository provides an enterprise-ready framework for moving from an AI idea to a measurable business outcome. It helps business owners, product teams, architects, engineers, analysts, and governance stakeholders answer five questions:
+
+1. **Which business problem should AI address?**
+2. **Which AI solution pattern best fits the work?**
+3. **What baseline must be captured before development?**
+4. **How will technical performance, adoption, operational improvement, and business impact be measured?**
+5. **What evidence will support a go, change, stop, or scale decision?**
+
+The principal guide covers common AI business patterns, 16 functional use-case categories, baseline measures, success metrics, an Agent ROI model, prioritization criteria, and an executive-readiness checklist.
+
+## Start Here
+
+Read the complete guide:
+
+- [AI Business Use Cases and Success Metrics](docs/ai-business-use-cases-and-success-metrics.md)
+
+If the guide is stored in the repository root instead of `/docs`, use this link:
+
+- [AI Business Use Cases and Success Metrics](ai-business-use-cases-and-success-metrics.md)
+
+## What the Framework Includes
+
+### Common AI solution patterns
+
+- Enterprise search and knowledge assistance
+- Drafting, summarization, and content transformation
+- Process automation and agentic workflows
+- Document and unstructured-data processing
+- Prediction, anomaly detection, and decision support
+- Customer and employee service
+- Software and quality engineering
+- Sales, marketing, and product intelligence
+- Compliance, assurance, and monitoring
+
+### Functional use-case catalog
+
+The guide provides suggested track and baseline measures for:
+
+| # | Function | Example track measures |
+|---:|---|---|
+| 01 | Customer Service | Resolution, FCR, CSAT, escalation drivers |
+| 02 | HR and Employee Operations | Tier-1 deflection, time to answer, reopen rate |
+| 03 | IT Service and Development | Resolution rate, MTTR, developer unblock time |
+| 04 | Finance and Invoice | Touchless rate, cycle time, exception rate |
+| 05 | Procurement and Intake | First-time-right routing, cycle time, compliance |
+| 06 | Knowledge and Documents | Time to first answer, citation accuracy |
+| 07 | Sales and Account Management | Seller active days, meeting-to-pipeline conversion |
+| 08 | Marketing and Content | Content throughput, time to first draft |
+| 09 | Legal and Contracts | Contract cycle time, turnaround, redline volume |
+| 10 | Executive Productivity | Email triage, meeting preparation, response latency |
+| 11 | Project Management | Status cycle, stakeholder latency, RAID accuracy |
+| 12 | Field Service | First-time fix rate, time on site, report compliance |
+| 13 | PR and Communications | Time to draft, time to approval, sentiment trend |
+| 14 | Product Management | PRD cycle, call synthesis, roadmap cadence |
+| 15 | Cybersecurity and SOC | MTTD, MTTR, incident-report turnaround |
+| 16 | Supply Chain and Warehouse | Handover latency, incident reporting, inventory accuracy |
+
+## Outcome-First Method
+
+Use the framework in the following order:
+
+```text
+Business Goal
+    ↓
+Stakeholder Map
+    ↓
+Current-State Workflow
+    ↓
+Measured Baseline
+    ↓
+AI Solution Pattern
+    ↓
+Metric Contract
+    ↓
+Representative Pilot
+    ↓
+Go / Change / Stop / Scale
+```
+
+Before development begins, capture at least three baseline values:
+
+1. **Volume**: transactions, requests, cases, documents, users, or events.
 2. **Time or cost**: handling time, cycle time, labor cost, unit cost, or operating expense.
 3. **Quality or outcome**: accuracy, defects, rework, conversion, satisfaction, compliance, or risk.
 
-> Completing these four activities produces the current-state document used as the evidence base for the next phase.
+## Success Metric Stack
 
----
+Measure AI solutions across four connected layers.
 
-## 6. Define Success Before Development
+| Layer | Key question | Example measures |
+|---|---|---|
+| **Solution** | Does the solution work? | Task success, accuracy, groundedness, latency, cost per successful task |
+| **Adoption** | Do people use it effectively and repeatedly? | Active users, sustained use, completion, workflow penetration, satisfaction |
+| **Operational** | Does the process improve? | Cycle time, throughput, backlog, automation, errors, rework, SLA attainment |
+| **Business** | Is value realized safely? | Revenue, validated hours saved, unit cost, customer outcomes, risk, ROI |
 
-Use this sequence as an intake workshop, architecture gate, or portfolio review. The output should be a one-page value case with named owners and evidence sources.
+> Usage is a leading indicator, not proof of business value. The metric contract should connect adoption to an operational change and a lagging business outcome.
 
-### Step 1: Frame the decision
+## Agent ROI Model
 
-Name the business problem, affected persona, workflow, pain point, strategic objective, sponsor, and accountable process owner.
-
-### Step 2: Map the current state
-
-Document volumes, time, cost, errors, handoffs, controls, exceptions, and the source systems that prove current performance.
-
-### Step 3: Choose the solution pattern
-
-Decide whether the need is best met by rules, analytics, retrieval, generative AI, or an agent. Define the human role and escalation boundary.
-
-### Step 4: Define the metric contract
-
-Select:
-
-- One primary business outcome
-- Supporting operational and adoption measures
-- Quality thresholds
-- Risk and cost guardrails
-- Baseline and target
-- Measurement horizon
-- Accountable owner
-- Authoritative data source
-
-### Step 5: Pilot the hardest part
-
-Use representative data and edge cases. Compare results with the baseline or a control group. Test technical feasibility, user desirability, safeguards, and operating cost.
-
-### Step 6: Gate and operate
-
-Make a data-based **go**, **change**, **stop**, or **scale** decision. After launch, monitor KPI performance, drift, cost, incidents, overrides, and realized value.
-
----
-
-## 7. Agent ROI Model
-
-Translate quantified value-pillar benefits into realized value by adjusting for active adoption and the portion of saved time that becomes productive output. Then compare realized value with total cost of ownership.
-
-### Formula
+The guide uses the following model:
 
 $$
 \text{Agent ROI (\%)} =
@@ -310,7 +121,7 @@ $$
 \times 100
 $$
 
-Repository renderers that do not support LaTeX can use this plain-text version:
+Plain-text equivalent:
 
 ```text
 Agent ROI (%) =
@@ -320,56 +131,77 @@ Agent ROI (%) =
 × 100
 ```
 
-### Formula definitions
+### Value pillars
 
-#### Adoption rate
+- **Efficiency**: time, throughput, and operating cost
+- **Quality**: accuracy, consistency, and reduced rework
+- **Revenue**: conversion, retention, pipeline, and speed to market
+- **Strategic value**: risk reduction, resilience, learning, and capability
 
-The share of target users actively engaging with the solution, not merely enrolled or licensed.
+### Measurement safeguards
+
+- Distinguish estimated, proxy, and validated financial benefits.
+- Use active engagement rather than license assignment as the adoption numerator.
+- Validate the recapture-rate assumption with observed evidence when possible.
+- Use the same time horizon for benefits and total cost of ownership.
+- Avoid double-counting benefits across value pillars.
+- Document each metric's owner, source, formula, exclusions, and confidence level.
+
+## Recommended Repository Structure
 
 ```text
-Adoption Rate = Active Target Users ÷ Eligible Target Users
+.
+├── README.md
+├── docs/
+│   ├── ai-business-use-cases-and-success-metrics.md
+│   ├── ai-use-case-intake-template.md
+│   ├── ai-metric-contract-template.md
+│   └── images/
+├── templates/
+│   ├── use-case-intake.md
+│   └── metric-contract.md
+└── tools/
+    └── ai-value-calculator.xlsx
 ```
 
-#### Recapture rate
+Only the main guide is required. The additional files are recommended companion assets for teams operationalizing the framework.
 
-The share of saved time that converts to productive output. The supplied model uses a **50% Forrester baseline** as an initial assumption. Validate or replace the assumption with observed evidence.
+## How to Use This Repository
 
-#### Total cost of ownership
+### Business and product owners
 
-Include all material AI solution costs for the same time horizon used to calculate benefits:
+Use the functional catalog to identify a candidate workflow, establish the business outcome, document current-state measures, and name the accountable process owner.
 
-- Licensing
-- Development
-- Integration
-- Change management
-- Maintenance and support
+### Architects and engineering teams
 
-#### Sum of value-pillar benefits
+Use the decision rule to select between deterministic automation, retrieval, analytical AI, generative AI, and an agentic pattern. Define human review and escalation boundaries before implementation.
 
-Quantify benefits across four pillars:
+### Analytics and finance partners
 
-| Value pillar | Example measures |
-|---|---|
-| **Efficiency** | Time saved, throughput increase, operating-cost reduction |
-| **Quality** | Accuracy improvement, consistency, reduced rework |
-| **Revenue** | Conversion, retention, pipeline velocity, speed to market |
-| **Strategic value** | Risk reduction, resilience, organizational learning, capability development |
+Validate baselines, metric definitions, benefit calculations, attribution logic, total cost of ownership, and the reporting horizon.
 
-### Measurement discipline
+### Risk, security, and compliance partners
 
-- Label **estimated**, **proxy**, and **validated financial** benefits separately.
-- Apply adoption and recapture adjustments only to benefits logically affected by those factors.
-- Use the same time horizon for benefits and costs.
-- Avoid double-counting the same benefit across multiple pillars.
-- Document the owner, source, calculation, assumptions, and confidence level for every benefit.
+Define material error types, control requirements, quality thresholds, monitoring, incident handling, and explicit stop conditions.
 
----
+### Portfolio and executive reviewers
 
-## 8. Prioritization and Metric Contract
+Use the prioritization score and metric contract to compare opportunities consistently and require evidence before scaling investment.
 
-### 8.1 Suggested use-case priority score
+## Minimum Metric Contract
 
-Score each criterion from 1 to 5 and multiply the rating by the assigned weight.
+A use case should not move into funded development until the following items are documented:
+
+- [ ] Primary business outcome and KPI
+- [ ] Baseline, target, and measurement window
+- [ ] Population, denominator, and exclusions
+- [ ] Data source and system of record
+- [ ] Calculation method and reporting cadence
+- [ ] Business owner and measurement owner
+- [ ] Quality threshold and risk guardrails
+- [ ] Go, change, stop, and scale decision rules
+
+## Suggested Prioritization Criteria
 
 | Criterion | Suggested weight |
 |---|---:|
@@ -381,100 +213,42 @@ Score each criterion from 1 to 5 and multiply the rating by the assigned weight.
 | Time to measurable value | 10% |
 | **Total** | **100%** |
 
-> **Important:** Do not average away a critical safety or feasibility failure. A low safeguard score is a stop condition, not merely a lower total.
+A critical safety, compliance, or feasibility failure should be treated as a gate, not averaged into an otherwise favorable score.
 
-### 8.2 Minimum metric contract
+## Contributing
 
-Before funding development, document all of the following:
+Contributions should improve practical usability while preserving the framework's outcome-first and evidence-based approach.
 
-- [ ] Primary business outcome and KPI
-- [ ] Baseline, target, and measurement window
-- [ ] Population, denominator, and exclusions
-- [ ] Data source and system of record
-- [ ] Calculation method and reporting cadence
-- [ ] Business owner and measurement owner
-- [ ] Quality threshold and risk guardrails
-- [ ] Go, change, stop, and scale decision rules
+Recommended contribution types include:
 
----
+- Additional functional use cases
+- Industry-specific metric examples
+- Reusable intake and metric-contract templates
+- Worked ROI examples
+- Measurement definitions and formulas
+- Governance and evaluation patterns
+- Corrections that improve clarity or consistency
 
-## 9. Worked Example: AI-Assisted Benefits Document Processing
+When proposing a new metric, include:
 
-### Value hypothesis
+1. Business purpose
+2. Formal definition
+3. Numerator and denominator
+4. Data source
+5. Measurement cadence
+6. Accountable owner
+7. Known limitations
+8. Decision supported by the metric
 
-If AI extracts, maps, and validates plan information while routing uncertain fields to human review, analysts can complete more plans with fewer manual touches without reducing accuracy or compliance.
+## Principles
 
-### Primary outcome
-
-```text
-Validated Hours Saved =
-(Baseline Minutes per Package − Assisted Minutes per Package)
-× Verified Completed Volume
-÷ 60
-```
-
-### Quality gate
-
-```text
-Critical-Field Accuracy ≥ Approved Threshold
-AND
-100% of Low-Confidence Fields Are Routed to Review
-```
-
-### Economic measure
-
-```text
-Net Benefit =
-Labor Value
-+ Avoided Rework
-− Model Cost
-− Platform Cost
-− Support Cost
-− Human Review Cost
-```
-
-### Example scorecard
-
-| Layer | Metric | Definition | Evidence source | Decision use |
-|---|---|---|---|---|
-| Solution | **Field-level accuracy** | Correct extracted values divided by reviewed values, segmented by criticality | Approved ground-truth test set and reviewer outcomes | Release and drift gate |
-| Adoption | **Workflow completion** | Eligible plan packages completed using the assisted workflow | Application telemetry and process records | Determine whether the solution fits real work |
-| Operational | **Median handling time** | Analyst effort per completed plan package compared with the baseline | Time study or workflow timestamps | Quantify capacity created |
-| Quality | **Rework and exception rate** | Packages requiring correction or escalation after initial completion | QA review and downstream defect records | Ensure speed does not shift work downstream |
-| Business | **Validated hours saved** | Observed time difference multiplied by verified completed volume | Baseline study, telemetry, and sponsor validation | Report realized productivity value |
-| Guardrail | **Material compliance incidents** | Confirmed incidents attributable to the assisted workflow | Risk and incident-management records | Stop, remediate, or narrow scope |
-
----
-
-## 10. Executive Readiness Checklist
-
-A proposal is ready for investment review when each statement can be answered with evidence rather than optimism.
-
-### Business readiness
-
-- [ ] A sponsor and accountable process owner are named.
-- [ ] The target population and workflow are specific.
-- [ ] A measurable baseline exists.
-- [ ] The value hypothesis is documented.
-- [ ] One primary outcome KPI is selected.
-
-### Evidence readiness
-
-- [ ] Metric definitions and denominators are documented.
-- [ ] Every KPI has an authoritative system of record.
-- [ ] Representative pilot data is available.
-- [ ] Edge cases and material error types are defined.
-- [ ] A validation and human-review plan exists.
-
-### Control readiness
-
-- [ ] Human decision rights and escalation boundaries are explicit.
-- [ ] Security, privacy, compliance, and architecture reviews are complete.
-- [ ] Quality, safety, and operating-cost thresholds are defined.
-- [ ] Monitoring covers drift, incidents, overrides, and cost.
-- [ ] Go, change, stop, scale, and retirement rules are approved.
-
----
+1. **Outcome first, AI second.**
+2. **Establish the baseline before building.**
+3. **Measure sustained use, not simple access.**
+4. **Connect adoption to operational and business outcomes.**
+5. **Treat quality, cost, privacy, security, and risk as design constraints.**
+6. **Use representative data and material edge cases.**
+7. **Scale only when evidence supports the decision.**
 
 ## References
 
@@ -483,12 +257,6 @@ A proposal is ready for investment review when each statement can be answered wi
 - [Microsoft: Evaluate and prioritize an AI use case with business envisioning](https://learn.microsoft.com/microsoft-cloud/dev/copilot/isv/business-envisioning)
 - [NIST AI Use Scenarios Library](https://www.nist.gov/publications/nist-ai-use-scenarios-library-developing-repeatable-ai-evaluations-and-metrics)
 
----
+## Scope Note
 
-## Notes
-
-- This guide does not claim a universal numerical ranking of AI use-case frequency.
-- The categories represent commonly repeated enterprise patterns.
-- Prioritization should be validated against the organization’s own demand, workflow telemetry, risks, strategy, and available evidence.
-- Numerical assumptions, including recapture rate, should be documented and replaced with observed data when available.
-
+This repository does not claim a universal numerical ranking of AI use-case frequency. The catalog represents recurring enterprise patterns. Prioritization and value claims should be validated against the organization's own strategy, workflows, telemetry, controls, risks, costs, and available evidence.
